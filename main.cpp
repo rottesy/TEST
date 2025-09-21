@@ -85,8 +85,8 @@ void getString(char *&dest, const char *prompt) {
   }
   char buffer[100];
   cin.getline(buffer, 100);
-  dest = new char[strlen(buffer) + 1];
-  strcpy_s(dest, strlen(buffer) + 1, buffer);
+  dest = new char[myStrlen(buffer) + 1];
+  strcpy_s(dest, myStrlen(buffer) + 1, buffer);
 }
 
 // Меню работы с Предком
