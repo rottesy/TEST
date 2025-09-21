@@ -1,6 +1,9 @@
 #include <cstring>
 #include <iostream>
 
+inline constexpr const int kMaxInt = 2147483647;
+inline constexpr const int kMinInt = -2147483648;
+
 using namespace std;
 
 int myStrlen(const char *str) {
@@ -52,14 +55,27 @@ public:
 };
 
 // Функция для получения числа от пользователя
-int getNumber(const char *prompt) {
-  if (prompt && strlen(prompt) > 0) {
-    cout << prompt;
-  }
-  int number;
-  cin >> number;
-  cin.ignore(); // Очищаем буфер после ввода числа
-  return number;
+int getNumber(const char *msg)
+{
+    int num = 0;
+
+    std::cout << msg;
+
+    while (true)
+    {
+        if (std::cin.peek() == '\n' || std::cin.peek() == ' ' || std::cin.fail())
+        {
+            std::cin.clear();
+            while (std::cin.get() != '\n' && !std::cin.eof())
+                ;
+            std::cout << "\nError, invalid input. Please try again: ";
+            continue;
+        }
+        if ((std::cin >> num).good() && std::cin.get() == '\n' && (kMinInt <= num) && (num <= kMaxInt))
+        {
+            return num;
+        }
+    }
 }
 
 // Функция для получения строки от пользователя
