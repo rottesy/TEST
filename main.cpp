@@ -142,9 +142,7 @@ public:
   ~FamilyProgram() { clear(); }
 
   // Запрет копирования
-  FamilyProgram(const FamilyProgram &) = delete;
-  FamilyProgram &operator=(const FamilyProgram &) = delete;
-
+  
   void addFamilyMember() {
     addMember();
     cout << kGreenColor << "Member added successfully!" << kWhiteColor << endl;
