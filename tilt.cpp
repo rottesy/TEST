@@ -25,7 +25,7 @@ int myStrlen(const char *str)
 class Ancestor
 {
   private:
-    char *humanName;
+    char *humanName = nullptr;
 
   protected:
     [[nodiscard]] const char *getName() const { return humanName; }
@@ -127,6 +127,13 @@ class FamilyProgram
         cout << "Enter name: ";
         cin.getline(name, 100);
 
+        if (myStrlen(name) == 0)
+        {
+            cout << "Error: Name cannot be empty!" << "\n";
+            size--;
+            return;
+        }
+
         switch (opt)
         {
             case 1:
@@ -158,10 +165,7 @@ class FamilyProgram
     FamilyProgram() = default;
     ~FamilyProgram() { clear(); }
 
-    void addFamilyMember()
-    {
-        addMember();
-    }
+    void addFamilyMember() { addMember(); }
 
     void showAllMembers() const
     {
