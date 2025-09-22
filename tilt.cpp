@@ -123,7 +123,7 @@ class FamilyProgram
 
         int opt = getNumber("Choose type: ");
 
-        char *name = new char[100];
+        auto *name = new char[100];
         cout << "Enter name: ";
         cin.getline(name, 100);
 
@@ -136,7 +136,7 @@ class FamilyProgram
 
             case 2:
             {
-                char *patronymic = new char[100];
+                auto *patronymic = new char[100];
                 cout << "Enter patronymic: ";
                 cin.getline(patronymic, 100);
 
